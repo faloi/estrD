@@ -1,3 +1,5 @@
+-- Implementar las funciones minimum y flatten
+
 minimum' :: [Int] -> Int
 minimum' [x] = x
 minimum' (x:xs) = min x (minimum xs)
@@ -5,6 +7,8 @@ minimum' (x:xs) = min x (minimum xs)
 flatten :: [[a]] -> [a]
 flatten [] = []
 flatten (x:xs) = x ++ flatten xs
+
+-- Volver a implementar head, tail, drop, take y last utilizando Maybe para manejar los errores
 
 headM :: [a] -> Maybe a
 headM [] = Nothing
