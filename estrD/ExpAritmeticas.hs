@@ -24,7 +24,12 @@ simplificarSuma (Suma e (Nro 0)) = e
 simplificarSuma (Suma (Nro 0) e) = e
 simplificarSuma e = e
 
+simplificarMult :: ExpA -> ExpA
+simplificarMult (Mult e (Nro 1)) = e
+simplificarMult (Mult (Nro 1) e) = e
+simplificarMult e = e
+
 simplificar :: ExpA -> ExpA
 simplificar (Nro n) = Nro n
-simplificar (Mult e1 e2) = Mult (simplificar e1) (simplificar e2)
+simplificar (Mult e1 e2) = simplificarMult (Mult (simplificar e1) (simplificar e2))
 simplificar (Suma e1 e2) = simplificarSuma (Suma (simplificar e1) (simplificar e2))

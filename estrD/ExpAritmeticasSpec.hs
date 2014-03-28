@@ -26,3 +26,6 @@ main = hspec $ do
 
     it "una expresion compleja con sumas de 0 adentro, devuelve la expresion sin las sumas de 0" $
       simplificar (Mult (Suma (Nro 0) (Nro 2)) (Suma (Nro 3) (Suma (Nro 0) (Nro 0)))) `shouldBe` Mult (Nro 2) (Nro 3)
+
+    it "una multiplicacion donde uno de los factores es 1, devuelve la otra expresion" $
+      simplificar (Mult (Nro 1) (Suma (Nro 3) (Nro 2))) `shouldBe` Suma (Nro 3) (Nro 2)
