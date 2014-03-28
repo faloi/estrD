@@ -8,8 +8,8 @@ isOperacion e = True
 
 showOperando :: ExpA -> String
 showOperando e
-	| isOperacion e = "(" ++ show e ++ ")"
-	| otherwise = show e
+  | isOperacion e = "(" ++ show e ++ ")"
+  | otherwise   = show e
 
 showOperacion :: ExpA -> ExpA -> String -> String
 showOperacion e1 e2 operador = showOperando e1 ++ " " ++ operador ++ " " ++ showOperando e2
@@ -23,5 +23,6 @@ simplificar :: ExpA -> ExpA
 simplificar (Nro n) = Nro n
 simplificar (Suma e (Nro 0)) = simplificar e
 simplificar (Suma (Nro 0) e) = simplificar e
+simplificar (Suma (Nro n1) (Nro n2)) = Suma (Nro n1) (Nro n2)
 simplificar (Suma e1 e2) = simplificar (Suma (simplificar e1) (simplificar e2))
 simplificar (Mult e1 e2) = Mult (simplificar e1) (simplificar e2)
