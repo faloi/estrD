@@ -1,10 +1,14 @@
 module ExpAritmeticas where
 
-data ExpA = Suma ExpA ExpA | Mult ExpA ExpA | Nro Int deriving (Eq)
+data Operador = Mas | Por deriving (Eq)
+data ExpA = OperacionBinaria Operador ExpA ExpA | Nro Int deriving (Eq)
+
+suma = OperacionBinaria Mas
+mult = OperacionBinaria Por
 
 isOperacion :: ExpA -> Bool
-isOperacion (Nro _) = False
-isOperacion e = True
+isOperacion (OperacionBinaria _ _ _) = True
+isOperacion _ = False
 
 showOperando :: ExpA -> String
 showOperando e
@@ -14,22 +18,23 @@ showOperando e
 showOperacion :: ExpA -> ExpA -> String -> String
 showOperacion e1 e2 operador = showOperando e1 ++ " " ++ operador ++ " " ++ showOperando e2
 
+showOperador :: Operador -> String
+showOperador Mas = "+"
+showOperador Por = "*"
+
 instance Show ExpA where
-  show (Suma e1 e2) = showOperacion e1 e2 "+"
-  show (Mult e1 e2) = showOperacion e1 e2 "*"
+  show (OperacionBinaria op e1 e2) = showOperacion e1 e2 (showOperador op)
   show (Nro n) = show n
 
-simplificarSuma :: ExpA -> ExpA
-simplificarSuma (Suma e (Nro 0)) = e
-simplificarSuma (Suma (Nro 0) e) = e
-simplificarSuma e = e
+simplificarOpBinaria :: Operador -> ExpA -> ExpA -> ExpA
+simplificarOpBinaria Mas e (Nro 0) = e
+simplificarOpBinaria Mas (Nro 0) e = e
 
-simplificarMult :: ExpA -> ExpA
-simplificarMult (Mult e (Nro 1)) = e
-simplificarMult (Mult (Nro 1) e) = e
-simplificarMult e = e
+simplificarOpBinaria Por e (Nro 1) = e
+simplificarOpBinaria Por (Nro 1) e = e
+
+simplificarOpBinaria operador e1 e2 = OperacionBinaria operador e1 e2
 
 simplificar :: ExpA -> ExpA
-simplificar (Nro n) = Nro n
-simplificar (Mult e1 e2) = simplificarMult (Mult (simplificar e1) (simplificar e2))
-simplificar (Suma e1 e2) = simplificarSuma (Suma (simplificar e1) (simplificar e2))
+simplificar (OperacionBinaria operador e1 e2) = simplificarOpBinaria operador (simplificar e1) (simplificar e2)
+simplificar e = e
