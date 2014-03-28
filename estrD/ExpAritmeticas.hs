@@ -19,10 +19,12 @@ instance Show ExpA where
   show (Mult e1 e2) = showOperacion e1 e2 "*"
   show (Nro n) = show n
 
+simplificarSuma :: ExpA -> ExpA
+simplificarSuma (Suma e (Nro 0)) = e
+simplificarSuma (Suma (Nro 0) e) = e
+simplificarSuma e = e
+
 simplificar :: ExpA -> ExpA
 simplificar (Nro n) = Nro n
-simplificar (Suma e (Nro 0)) = simplificar e
-simplificar (Suma (Nro 0) e) = simplificar e
-simplificar (Suma (Nro n1) (Nro n2)) = Suma (Nro n1) (Nro n2)
-simplificar (Suma e1 e2) = simplificar (Suma (simplificar e1) (simplificar e2))
 simplificar (Mult e1 e2) = Mult (simplificar e1) (simplificar e2)
+simplificar (Suma e1 e2) = simplificarSuma (Suma (simplificar e1) (simplificar e2))
