@@ -23,7 +23,7 @@ main = hspec $ do
 
   describe "filterPrimos" $ do
     it "dada una lista de enteros, devuelve la lista de los que son primos." $
-      filterPrimos [1, 2, 4, 5] `shouldBe` [1, 2, 5]
+      filterPrimos [1, 2, 4, 5] `shouldBe` [2, 5]
 
   describe "zipMaximos1" $ do
     it "dadas dos listas de la misma longitud, devuelve una lista donde el elemento n es el maximo entre el elemento n de la lista 1 y de la lista 2" $
@@ -80,8 +80,18 @@ main = hspec $ do
       takeNombresPersonas [Persona "Juan" "Cruz" (Fecha 30 10 1991), Persona "Pepe" "Lui" (Fecha 1 11 1991)] (Fecha 31 10 1991) `shouldBe` ["Juan"]
 
   describe "sumParesColor" $ do
-    it "dadas dos listas de ParColor, devuelve una lista de Par-Color donde la cantidad de cada elemento es la suma del elemento de ese color en cada lista" $
-      sumParesColor [(Rojo, 12), (Verde, 1)] [(Azul, 8), (Rojo, 3)] `shouldBe` [(Rojo, 15), (Verde, 1), (Azul, 8)]
+    describe "dadas dos listas de ParColor," $ do
+      it "donde la segunda tiene mas colores que la primera, devuelve la suma de los que se repiten mas los que no se repiten" $
+        sumParesColor [(Rojo, 12), (Verde, 1)] [(Azul, 8), (Rojo, 3)] `shouldBe` [(Rojo, 15), (Verde, 1), (Azul, 8)]
+
+      it "donde la primera tiene mas colores que la segunda, devuelve la suma de los que se repiten mas los que no se repiten" $
+        sumParesColor [(Rojo, 12), (Verde, 1), (Azul, 8)] [(Rojo, 3)] `shouldBe` [(Rojo, 15), (Verde, 1), (Azul, 8)]        
+
+      it "con la misma cantidad de colores, devuelve la suma de los colores" $
+        sumParesColor [(Rojo, 12), (Verde, 1)] [(Verde, 7), (Rojo, 3)] `shouldBe` [(Rojo, 15), (Verde, 8)]             
+
+    it "dada una lista vacia y otra de ParColor, devuelve la segunda" $
+      sumParesColor [] [(Azul, 8), (Rojo, 3)] `shouldBe` [(Azul, 8), (Rojo, 3)]
 
   describe "reversa" $ do
     it "dada una lista de enteros, devuelve la lista con los mismos elementos de atras para adelante" $

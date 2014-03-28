@@ -11,8 +11,16 @@ filterPositivos [] = []
 filterPositivos (x:xs) = if x > 0 then x : filterPositivos xs else filterPositivos xs
 
 -- 3
+esDivisible :: Int -> Int -> Bool
+esDivisible x y = mod x y == 0
+
+esDivisiblePorAlguno :: Int -> [Int] -> Bool
+esDivisiblePorAlguno _ [] = False
+esDivisiblePorAlguno n (x:xs) = esDivisible n x || esDivisiblePorAlguno n xs
+
 esPrimo :: Int -> Bool
-esPrimo = undefined
+esPrimo 1 = False
+esPrimo n = not (esDivisiblePorAlguno n [2..n-1])
 
 filterPrimos :: [Int] -> [Int]
 filterPrimos [] = []
@@ -100,8 +108,27 @@ takeNombresPersonas ps fecha = map' (nombre) (takePersonas ps fecha)
 data Color = Rojo | Verde | Azul deriving (Show, Eq)
 type ParColor = (Color, Int)
 
+color :: ParColor -> Color
+color x = fst x
+
+sumPar :: ParColor -> ParColor -> ParColor
+sumPar (col, cant1) (_, cant2) = (col, cant1 + cant2)
+
+findPar :: Color -> [ParColor] -> ParColor
+findPar col [] = (col, 0)
+findPar col (p:ps)
+	| color p == col = p
+	| otherwise = findPar col ps
+
+paresMenos :: Color -> [ParColor] -> [ParColor]
+paresMenos col [] = []
+paresMenos col (p:ps)
+	| color p == col = paresMenos col ps
+	| otherwise = p : paresMenos col ps
+
 sumParesColor :: [ParColor] -> [ParColor] -> [ParColor]
-sumParesColor = undefined
+sumParesColor [] ys = ys
+sumParesColor (x:xs) ys = sumPar x (findPar (color x) ys) : sumParesColor xs (paresMenos (color x) ys)
 
 -- 15
 reversa :: [Int] -> [Int]
