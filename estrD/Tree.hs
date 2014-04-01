@@ -35,6 +35,8 @@ tree2list :: Tree a -> [a]
 tree2list EmptyT = []
 tree2list (NodeT x t1 t2) = x : tree2list t1 ++ tree2list t2
 
+-- levels
+
 levelT :: Tree a -> Int -> [a]
 levelT _ 0 = []
 levelT EmptyT _ = []
@@ -42,6 +44,28 @@ levelT (NodeT x t1 t2) n
   | n == 1    = [x] 
   | otherwise = levelT t1 (n-1) ++ levelT t2 (n-1)
 
+getLevels :: Tree a -> Int -> [[a]]
+getLevels _ 0 = []
+getLevels t n = getLevels t (n - 1) ++ [levelT t n]
+
 levels :: Tree a -> [[a]]
-levels EmptyT = [[]]
-levels t = map (levelT t) [1..heightT t]
+levels t = getLevels t (heightT t)
+
+-- inorder
+
+inorder :: Tree a -> [a]
+inorder EmptyT = []
+inorder (NodeT e lt rt) = inorder lt ++ [e] ++ inorder rt
+
+-- isBalanced
+
+longitudRamaLarga :: Tree a -> Int
+longitudRamaLarga EmptyT = 0
+longitudRamaLarga (NodeT _ lt rt) = 1 + max (longitudRamaLarga lt) (longitudRamaLarga rt)
+
+longitudRamaCorta :: Tree a -> Int
+longitudRamaCorta EmptyT = 0
+longitudRamaCorta (NodeT _ lt rt) = 1 + min (longitudRamaCorta lt) (longitudRamaCorta rt)
+
+isBalanced :: Tree a -> Bool
+isBalanced t = longitudRamaLarga t - longitudRamaCorta t <= 1

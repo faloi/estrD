@@ -4,6 +4,8 @@ import Tree
 import Test.Hspec
 import Control.Exception (evaluate)
 
+shouldBeEmpty xs = xs `shouldBe` ([] :: [Int])
+
 main :: IO ()
 main = hspec $ do
   describe "heightT" $ do
@@ -74,8 +76,8 @@ main = hspec $ do
             ) 3 `shouldBe` [4, 7, 6]
 
   describe "levels" $ do
-    it "dado un arbol vacio, devuelve una lista de listas vacia" $
-      levels EmptyT `shouldBe` ([[]] :: [[Int]])
+    it "dado un arbol vacio, devuelve una vacia" $
+      levels EmptyT `shouldBe` ([] :: [[Int]])
 
     it "dado un arbol no vacio, devuelve la lista con la lista de cadda nivel" $
       levels (NodeT 1 
@@ -91,3 +93,41 @@ main = hspec $ do
                 EmptyT
               )
             ) `shouldBe` [[1], [2, 1], [4, 7, 6], [0]]
+
+  describe "inorder" $ do
+    it "dado un arbol vacio, devuelve una lista vacia" $
+      shouldBeEmpty $ inorder EmptyT
+
+    it "dado un arbol, devuelve una lista con los elementos recorridos en inorden" $
+      inorder (NodeT 3
+                (NodeT 2
+                  (EmptyT)
+                  (NodeT 1
+                    (leaf 42)
+                    EmptyT
+                  )
+                )
+                (leaf 4)
+              ) `shouldBe` [2, 42, 1, 3, 4]
+
+  describe "isBalanced" $ do
+    it "dado un arbol vacio, devuelve True" $
+      isBalanced EmptyT `shouldBe` True
+
+    it "dado un arbol no balanceado, devuelve False" $
+      isBalanced  (NodeT 3
+                    (NodeT 2
+                      (EmptyT)
+                      (NodeT 1
+                        (leaf 42)
+                        EmptyT
+                      )
+                    )
+                    (leaf 4)
+                  ) `shouldBe` False
+
+    it "dado un arbol balanceado, devuelve True" $
+      isBalanced  (NodeT 3
+                    (leaf 42)
+                    (leaf 13)
+                  ) `shouldBe` True
