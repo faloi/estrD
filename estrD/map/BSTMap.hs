@@ -9,3 +9,5 @@ instance Map BSTMap where
   emptyM = MkMap EmptyT
   lookupM (MkMap tree) x = lookupT tree x
   addM (MkMap tree) k v = MkMap (addT tree (k, v))
+  removeM (MkMap tree) k = MkMap (removeT tree k)
+  domainM (MkMap tree) = domainT tree
