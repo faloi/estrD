@@ -7,13 +7,14 @@ leaf x = NodeT x EmptyT EmptyT
 
 list2bst :: Ord k => [(k, v)] => BST (k, v)
 list2bst [] = EmptyT
-list2bst (x:xs) = list2bst xs `agregar` x
+list2bst (x:xs) = list2bst xs `addT` x
 
-agregar :: Ord k => BST (k, v) -> (k, v) -> BST (k, v)
-agregar EmptyT x = leaf x
-agregar (NodeT root@(k, _) ls rs) x@(xk, xv)
-  | xk <= k = NodeT root (agregar ls x) rs
-  | otherwise = NodeT root ls (agregar rs x)
+addT :: Ord k => BST (k, v) -> (k, v) -> BST (k, v)
+addT EmptyT x = leaf x
+addT tree@(NodeT root@(k, _) ls rs) x@(xk, _)
+  | xk == k   = tree
+  | xk < k    = NodeT root (addT ls x) rs
+  | otherwise = NodeT root ls (addT rs x)
 
 lookupT :: (Ord k, Eq k) => BST (k, v) -> k -> Maybe v
 lookupT EmptyT _ = Nothing

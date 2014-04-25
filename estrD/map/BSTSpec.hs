@@ -6,15 +6,24 @@ import Control.Exception (evaluate)
 
 main :: IO ()
 main = hspec $ do
-  describe "agregar" $ do
+  describe "addT" $ do
     it "cuando el arbol esta vacio, devuelve un arbol con el elemento dado en la raiz" $ do
-      agregar EmptyT (2, "Fede") `shouldBe` leaf (2, "Fede")
+      addT EmptyT (2, "Fede") `shouldBe` leaf (2, "Fede")
+
+    it "cuando la clave ya existe, no lo agrega" $ do
+      addT (
+        NodeT (3, "3")           
+          EmptyT
+          (leaf (4, "4")) 
+        ) (4, "5") `shouldBe` NodeT (3, "3") 
+          EmptyT
+          (leaf (4, "4")) 
 
     it "cuando el arbol no esta vacio y el elemento es menor que la raiz, lo agrega en el subarbol izquierdo" $ do
-      agregar (leaf (2, "Carlos")) (1, "Fede") `shouldBe` NodeT (2, "Carlos") (leaf (1, "Fede")) EmptyT
+      addT (leaf (2, "Carlos")) (1, "Fede") `shouldBe` NodeT (2, "Carlos") (leaf (1, "Fede")) EmptyT
 
     it "cuando el arbol no esta vacio y el elemento es mayor que la raiz, lo agrega en el subarbol derecho" $ do
-      agregar (
+      addT (
         NodeT (2, "Carlos")
           (leaf (1, "Juan"))
           (leaf (3, "Pepito"))

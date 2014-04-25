@@ -14,7 +14,7 @@ main = hspec $ do
     it "devuelve un map vacio" $
       mapVacio `shouldBe` MkMap EmptyT
 
-  describe "lookup" $ do
+  describe "lookupM" $ do
     it "cuando el mapa esta vacio, devuelve Nothing" $ do
       lookupM mapVacio 3 `shouldBe` Nothing
 
@@ -29,3 +29,10 @@ main = hspec $ do
 
     it "cuando la clave esta en el subarbol derecho, devuelve su valor" $ do
       lookupM (MkMap (list2bst [(5, "Pedro"), (8, "Pepe"), (6, "Jose"), (9, "Jesica")])) 9 `shouldBe` Just "Jesica"
+
+  describe "addM" $ do
+    it "cuando la clave no existe, agrega el elemento al mapa" $ do
+      addM mapVacio 3 "3" `shouldBe` MkMap (leaf (3, "3"))
+
+    it "cuando la clave existe, no agrega el elemento al mapa" $ do
+      addM (MkMap (leaf (3, "3"))) 3 "27" `shouldBe` MkMap (leaf (3, "3"))
