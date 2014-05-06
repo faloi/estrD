@@ -69,3 +69,14 @@ longitudRamaCorta (NodeT _ lt rt) = 1 + min (longitudRamaCorta lt) (longitudRama
 
 isBalanced :: Tree a -> Bool
 isBalanced t = longitudRamaLarga t - longitudRamaCorta t <= 1
+
+-- 
+
+zipConcat :: [[a]] -> [[a]] -> [[a]]
+zipConcat [] ys = ys
+zipConcat xs [] = xs
+zipConcat (x:xs) (y:ys) = (x ++ y) : zipConcat xs ys
+
+tree2listPerLevel :: Tree a -> [[a]]
+tree2listPerLevel EmptyT = []
+tree2listPerLevel (NodeT x t1 t2) = [x] : zipConcat (tree2listPerLevel t1) (tree2listPerLevel t2)

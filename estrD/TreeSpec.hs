@@ -76,7 +76,7 @@ main = hspec $ do
             ) 3 `shouldBe` [4, 7, 6]
 
   describe "levels" $ do
-    it "dado un arbol vacio, devuelve una vacia" $
+    it "dado un arbol vacio, devuelve una lista vacia" $
       levels EmptyT `shouldBe` ([] :: [[Int]])
 
     it "dado un arbol no vacio, devuelve la lista con la lista de cadda nivel" $
@@ -131,3 +131,35 @@ main = hspec $ do
                     (leaf 42)
                     (leaf 13)
                   ) `shouldBe` True
+
+  describe "zipConcat" $ do
+    it "dada una lista vacia y otra lista, devuelve la segunda" $
+      zipConcat [] [[1, 2], [3]] `shouldBe` [[1, 2], [3]]
+
+    it "dada una lista y una lista vacia, devuelve la primera" $
+      zipConcat [[1, 2], [3]] [] `shouldBe` [[1, 2], [3]]
+
+    it "dadas dos listas con igual cantidad de elementos, devuelve una lista con el concat de cada elemento" $
+      zipConcat [[1, 2], [5]] [[3, 4], [6, 7, 8]] `shouldBe` [[1, 2, 3, 4], [5, 6, 7, 8]]
+
+    it "dadas dos listas con distinta cantidad de elementos, devuelve una lista con el concat de cada elemento" $
+      zipConcat [[1, 2], [5]] [[3, 4]] `shouldBe` [[1, 2, 3, 4], [5]]
+
+  describe "tree2listPerLevel" $ do
+    it "dado un arbol vacio, devuelve una lista vacia" $
+      tree2listPerLevel EmptyT `shouldBe` ([] :: [[Int]])
+
+    it "dado un arbol no vacio, devuelve la lista con la lista de cadda nivel" $
+      tree2listPerLevel (NodeT 1 
+              (NodeT 2 
+                (leaf 4) 
+                (leaf 7)
+              ) 
+              (NodeT 1 
+                (NodeT 6
+                  (leaf 0) 
+                  EmptyT
+                )
+                EmptyT
+              )
+            ) `shouldBe` [[1], [2, 1], [4, 7, 6], [0]]
