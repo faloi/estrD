@@ -29,7 +29,7 @@ reverseL (L xs isReverted) = L xs (not isReverted)
 
 concatL :: Lista a -> Lista a -> Lista a
 concatL (L [] _) l2 = l2
-concatL l1 l2 = concatL (tailL l1) (consL (headL l1) l2) 
+concatL l1 l2 = consL (headL l1) (concatL (tailL l1) l2)
 
 -- Ejercicio 3 
 type Alumno = (Nombre, Edad, Email)
