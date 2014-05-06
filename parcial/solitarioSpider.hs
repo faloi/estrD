@@ -6,7 +6,7 @@ data Numero = As | N2 | N3 | N4
 
 -- Ejercicio 1
 mover :: Spider -> Move -> Spider
-mover sp Repartir = repartir s
+mover sp Repartir = repartir sp
 mover sp (MoverNDeA origen destino k) = moverDeA origen destino k sp
 
 jugar :: Spider -> [Move] -> Spider
@@ -26,3 +26,11 @@ arbolSpider h sp = armarArboles (siguientes (jugadasPosibles sp)) h
 armarArboles [] _ = EmptyT
 armarArboles _ 0 = EmptyT  
 armarArboles [sp:sps] h = NodeT sp (armarArboles (siguientes (jugadasPosibles sp)) (h-1)) : armarArboles sps h
+
+-- Version hecha en clase
+arbolSpider 0 _ = EmptyT
+arbolSpider n sp = NodeT sp subarboles
+	where subarboles = armarArboles (n-1) (siguientes sp (jugadasPosibles sp))
+
+armarArboles _ [] = []
+armarArboles n (s:ls) = arbolSpider n s : armarArboles n ls
