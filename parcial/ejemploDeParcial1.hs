@@ -32,17 +32,17 @@ concatL (L [] _) l2 = l2
 concatL l1 l2 = consL (headL l1) (concatL (tailL l1) l2)
 
 -- Ejercicio 3 
-type Alumno = (Nombre, Edad, Email)
+type Alumno = (String, Int, String)
 type ListadoAlumnos = Map String Alumno
 
 nombre (n, _, _) = n
 edad (_, e, _) = e
 
 
-menores20EstrD :: ListadoAlumnos -> [String]
+menores20EstrD :: ListadoAlumnos -> Set String -> [String]
 menores20EstrD alumnosTpi dnisAlumnosEstrD = nombres (menores (alumnosEstrD alumnosTpi dnisAlumnosEstrD))
 
-alumnosEstrD :: ListadoAlumnos -> [Alumno] 
+alumnosEstrD :: ListadoAlumnos -> Set String -> [Alumno] 
 alumnosEstrD alumnosTpi dnis 
     | isEmptyS dnis = []
     | otherwise = lookup alumnosTpi (headS dnis) : alumnosEstrD alumnosTpi (tailS ds)
