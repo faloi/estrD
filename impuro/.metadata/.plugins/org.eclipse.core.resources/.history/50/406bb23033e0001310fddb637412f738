@@ -1,0 +1,19 @@
+#include <iostream>
+#include "stack.h"
+
+using namespace std;
+
+int main()
+{
+    Stack s = emptyStack();
+
+    push(s, 10);
+    push(s, 20);
+    push(s, 80);
+
+    pop(s);
+
+    cout << "El primer elemento es " << top(s) << " y el size es " << size(s) << " esta vacia " << boolalpha << isEmpty(s) << endl;
+
+    return 0;
+}

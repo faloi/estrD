@@ -1,0 +1,11 @@
+struct QueueNode {
+	int elem;
+	QueueNode* next;
+};
+
+struct QueueSt {
+	int size;
+	QueueNode* head;
+	QueueNode* last;
+};
+

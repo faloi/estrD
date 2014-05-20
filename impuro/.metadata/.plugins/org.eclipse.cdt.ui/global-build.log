@@ -1,0 +1,151 @@
+11:58:20 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+11:58:38 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+11:58:48 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+11:58:50 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+11:58:54 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+11:59:42 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+11:59:59 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:25:25 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp: In function ‘int main()’:
+../src/main.cpp:16:122: error: ‘isEmpty’ was not declared in this scope
+     cout << "El primer elemento es " << top(s) << " y el size es " << size(s) << " esta vacia " << boolalpha << isEmpty(s) << endl;
+                                                                                                                          ^
+make: *** [src/main.o] Error 1
+12:25:55 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building file: ../src/stack.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/stack.d" -MT"src/stack.d" -o "src/stack.o" "../src/stack.cpp"
+Finished building: ../src/stack.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:27:07 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+../src/main.cpp: In function ‘int main()’:
+../src/main.cpp:17:5: error: expected ‘;’ before ‘cout’
+     cout << "Primer elemento: " << top(s) << endl;
+     ^
+make: *** [src/main.o] Error 1
+12:27:21 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:27:34 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:28:50 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:29:33 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:29:36 **** Incremental Build of configuration Debug for project stack ****
+make all 
+make: Nothing to be done for `all'.
+12:31:32 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
+12:31:44 **** Incremental Build of configuration Debug for project stack ****
+make all 
+Building file: ../src/main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.d" -o "src/main.o" "../src/main.cpp"
+Finished building: ../src/main.cpp
+ 
+Building target: stack
+Invoking: GCC C++ Linker
+g++  -o "stack"  ./src/main.o ./src/stack.o   
+Finished building target: stack
+ 
