@@ -1,29 +1,21 @@
-#include <iostream>
 #include "stack.h"
-
-using namespace std;
-
-void printToConsole(Stack s) {
-	if (isEmpty(s)) {
-		cout << "STACK VACIO";
-		return;
-	}
-
-	cout << "PRIMER ELEMENTO: " << top(s) << endl;
-    cout << "SIZE: " << size(s) << endl;
-}
+#include <cspec/cspec.h>
 
 int main()
 {
-    Stack s = emptyStack();
+	describe("size", function() {
+		it("should be 0 for an empty stack", function() {
+		    Stack s = emptyStack();
+		    should_be_equals(0, size(s));
+		});
 
-    push(s, 10);
-    push(s, 20);
-    push(s, 80);
+		it("should be the count for a non empty stack", function() {
+		    Stack s = emptyStack();
+		    push(s, 25);
 
-    pop(s);
+		    should_be_equals(2, size(s));
+		});
+	});
 
-    printToConsole(s);
-
-    return 0;
+    return CSPEC_RESULT;
 }
