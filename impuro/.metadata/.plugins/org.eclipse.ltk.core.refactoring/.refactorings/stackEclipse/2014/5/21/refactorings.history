@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;stackEclipse/src/stackEclipse.cpp&apos; to &apos;main.cpp&apos;" description="Rename resource &apos;stackEclipse.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/stackEclipse.cpp" name="main.cpp" stamp="1400597055853" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;stackEclipse/src/stack&apos; to &apos;stack.h&apos;" description="Rename resource &apos;stack&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/stack" name="stack.h" stamp="1400597069776" updateReferences="true"/>
-</session>
