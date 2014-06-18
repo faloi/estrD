@@ -1,2 +1,0 @@
-copiar el .so en /usr/lib
-copiar los .h en /usr/include
