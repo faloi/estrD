@@ -16,6 +16,7 @@ struct CharBagStr {
 	int size;
 	unsigned* table;
 	unsigned char* elements;
+	int lastElement;
 };
 
 CharBag emptyCharBag(int n) {
@@ -23,6 +24,7 @@ CharBag emptyCharBag(int n) {
 	value->size = n;
 	value->table = new unsigned[n];
 	value->elements = new unsigned char[n];
+	value->lastElement = 0;
 
 	for (int i = 0; i < n; i++) {
 		value->table[i] = 0;
@@ -33,8 +35,10 @@ CharBag emptyCharBag(int n) {
 }
 
 void add(CharBag& b, unsigned char c) {
-	if (b->table[c] == 0)
-		b->elements[0] = c;
+	if (b->table[c] == 0) {
+		b->elements[b->lastElement] = c;
+		b->lastElement++;
+	}
 
 	b->table[c]++;
 }

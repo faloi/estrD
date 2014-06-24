@@ -76,11 +76,23 @@ int main(int argc, char **argv) {
 					should(valid(iterator)) be falsey;
 				});
 			});
+
+			describe("next", function() {
+				it("puede avanzar al siguiente elemento", function() {
+					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+					add(charBag, 'a');
+					add(charBag, 'b');
+					add(charBag, 'b');
+
+					CharBagIterator iterator = iterate(charBag);
+					next(iterator);
+
+					should(currentChar(iterator)) be equal('b');
+				});
+			});
 		});
     });
 
     return CSPEC_RESULT;
 
 }
-
-
