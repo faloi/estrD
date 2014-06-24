@@ -78,3 +78,7 @@ char currentChar(CharBagIterator it) {
 int currentCount(CharBagIterator it) {
 	return get(it->charBag, currentChar(it));
 }
+
+void deleteCharBagIterator(CharBagIterator& it) {
+	delete it;
+}
