@@ -11,86 +11,74 @@
 #define CHARBAG_SIZE 256
 
 int main(int argc, char **argv) {
-
     describe("CharBag", function () {
-		describe("Calculo de ocurrencias", function() {
-    		it("un char no almacenado tiene 0 ocurrencias", function() {
-    			CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-    			should(get(charBag, 'a')) be equal(0);
-    		});
+      static CharBag charBag;
 
-    		it("un char almacenado una vez tiene 1 ocurrencia", function() {
-    			CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+      describe("Calculo de ocurrencias", function() {
+          before(function(){
+            charBag = emptyCharBag(CHARBAG_SIZE);
+          });
 
-    			add(charBag, 'a');
-    			should(get(charBag, 'a')) be equal(1);
-    		});
+          it("un char no almacenado tiene 0 ocurrencias", function() {
+            should(get(charBag, 'a')) be equal(0);
+          });
 
-    		it("un char almacenado N veces tiene N ocurrencias", function() {
-    			CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+          it("un char almacenado una vez tiene 1 ocurrencia", function() {
+            add(charBag, 'a');
+            should(get(charBag, 'a')) be equal(1);
+          });
 
-    			add(charBag, 'a');
-    			add(charBag, 'a');
-    			add(charBag, 'a');
+          it("un char almacenado N veces tiene N ocurrencias", function() {
+            add(charBag, 'a');
+            add(charBag, 'a');
+            add(charBag, 'a');
 
-    			should(get(charBag, 'a')) be equal(3);
-    		});
-    	});
+            should(get(charBag, 'a')) be equal(3);
+          });
+        });
 
-		describe("Iterator", function() {
-			describe("un iterator recien creado", function() {
-				it("sabe decir el current char", function() {
-					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-					add(charBag, 'a');
+      describe("Iterator", function() {
+        static CharBagIterator iterator;
 
-					CharBagIterator iterator = iterate(charBag);
-					should(currentChar(iterator)) be equal('a');
-				});
+          before(function(){
+            charBag = emptyCharBag(CHARBAG_SIZE);
+            iterator = iterate(charBag);
+          });
 
-				it("sabe decir el count del current char", function() {
-					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-					add(charBag, 'a');
-					add(charBag, 'a');
+        it("un iterator recien creado sabe decir el current char", function() {
+          add(charBag, 'a');
+          should(currentChar(iterator)) be equal('a');
+        });
 
-					CharBagIterator iterator = iterate(charBag);
-					should(currentCount(iterator)) be equal(2);
-				});
-			});
+        it("un iterator recien creado sabe decir el count del current char", function() {
+          add(charBag, 'a');
+          add(charBag, 'a');
 
-			describe("valid", function() {
-				it("sabe decir si el elemento actual es valido", function() {
-					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-					add(charBag, 'a');
+          should(currentCount(iterator)) be equal(2);
+        });
 
-					CharBagIterator iterator = iterate(charBag);
-					should(valid(iterator)) be truthy;
-				});
+        it("sabe decir si el elemento actual es valido", function() {
+          add(charBag, 'a');
+          should(valid(iterator)) be truthy;
+        });
 
-				it("sabe decir si el elemento actual es invalido", function() {
-					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-					add(charBag, 'a');
+        it("sabe decir si el elemento actual es invalido", function() {
+          add(charBag, 'a');
+          next(iterator);
 
-					CharBagIterator iterator = iterate(charBag);
-					next(iterator);
+          should(valid(iterator)) be falsey;
+        });
 
-					should(valid(iterator)) be falsey;
-				});
-			});
+        it("puede avanzar al siguiente elemento", function() {
+          add(charBag, 'a');
+          add(charBag, 'b');
+          add(charBag, 'b');
 
-			describe("next", function() {
-				it("puede avanzar al siguiente elemento", function() {
-					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-					add(charBag, 'a');
-					add(charBag, 'b');
-					add(charBag, 'b');
+          next(iterator);
 
-					CharBagIterator iterator = iterate(charBag);
-					next(iterator);
-
-					should(currentChar(iterator)) be equal('b');
-				});
-			});
-		});
+          should(currentChar(iterator)) be equal('b');
+        });
+      });
     });
 
     return CSPEC_RESULT;
