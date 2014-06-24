@@ -36,6 +36,16 @@ int main(int argc, char **argv) {
     			should(get(charBag, 'a')) be equal(3);
     		});
     	});
+
+		describe("Iterator", function() {
+			it("un iterator recien creado apunta al primer elemento", function() {
+				CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+				add(charBag, 'a');
+
+				CharBagIterator iterator = iterate(charBag);
+				should(currentChar(iterator)) be equal('a');
+			});
+		});
     });
 
     return CSPEC_RESULT;
