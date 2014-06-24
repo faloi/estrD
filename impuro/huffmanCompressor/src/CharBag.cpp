@@ -10,6 +10,8 @@
 
 using namespace std;
 
+// Charbag
+
 struct CharBagStr {
 	int size;
 	unsigned* table;
@@ -44,6 +46,8 @@ void deleteCharBag(CharBag& b) {
 	delete b;
 }
 
+// Iterator
+
 struct CharBagIteratorStr {
 	CharBag charBag;
 	unsigned currentIndex;
@@ -59,4 +63,8 @@ CharBagIterator iterate(CharBag b) {
 
 char currentChar(CharBagIterator it) {
 	return it->charBag->elements[it->currentIndex];
+}
+
+int currentCount(CharBagIterator it) {
+	return get(it->charBag, currentChar(it));
 }

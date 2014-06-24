@@ -38,12 +38,23 @@ int main(int argc, char **argv) {
     	});
 
 		describe("Iterator", function() {
-			it("un iterator recien creado apunta al primer elemento", function() {
-				CharBag charBag = emptyCharBag(CHARBAG_SIZE);
-				add(charBag, 'a');
+			describe("un iterator recien creado", function() {
+				it("sabe decir el current char", function() {
+					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+					add(charBag, 'a');
 
-				CharBagIterator iterator = iterate(charBag);
-				should(currentChar(iterator)) be equal('a');
+					CharBagIterator iterator = iterate(charBag);
+					should(currentChar(iterator)) be equal('a');
+				});
+
+				it("sabe decir el count del current char", function() {
+					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+					add(charBag, 'a');
+					add(charBag, 'a');
+
+					CharBagIterator iterator = iterate(charBag);
+					should(currentCount(iterator)) be equal(2);
+				});
 			});
 		});
     });
