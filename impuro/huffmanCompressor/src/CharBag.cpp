@@ -12,6 +12,11 @@ using namespace std;
 
 // Charbag
 
+// INV. REP
+// table - contiene las ocurrencias de cada elemento, accesible de forma directa usando el elemento como indice
+// elements - contiene todos los elementos que tienen al menos una ocurrencia
+// nextElement - indica la posicion dentro de elements donde se va a guardar el proximo elemento nuevo
+
 struct CharBagStr {
 	unsigned* table;
 	unsigned char* elements;
@@ -49,6 +54,10 @@ void deleteCharBag(CharBag& b) {
 }
 
 // Iterator
+
+// INV. REP.
+// charBag - el charBag que itera este iterator
+// currentIndex - el indice actual que se está iterando de charBag->elements
 
 struct CharBagIteratorStr {
 	CharBag charBag;
