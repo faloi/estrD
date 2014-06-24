@@ -11,11 +11,11 @@ void deleteCharBag(CharBag& b);
 
 // Agrega una ocurrencia del caracer c en el CharBag.
 // Complejidad: O(1)
-void add(CharBag& b, char c);
+void add(CharBag& b, unsigned char c);
 
 // Retorna la cantidad de ocurrencias del caracter c en el CharBag.
 // Complejidad: O(1)
-int get(CharBag& b, char c);
+int get(CharBag& b, unsigned char c);
 
 
 // Tipo de un iterador de CharBags
