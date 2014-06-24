@@ -56,6 +56,26 @@ int main(int argc, char **argv) {
 					should(currentCount(iterator)) be equal(2);
 				});
 			});
+
+			describe("valid", function() {
+				it("sabe decir si el elemento actual es valido", function() {
+					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+					add(charBag, 'a');
+
+					CharBagIterator iterator = iterate(charBag);
+					should(valid(iterator)) be truthy;
+				});
+
+				it("sabe decir si el elemento actual es invalido", function() {
+					CharBag charBag = emptyCharBag(CHARBAG_SIZE);
+					add(charBag, 'a');
+
+					CharBagIterator iterator = iterate(charBag);
+					next(iterator);
+
+					should(valid(iterator)) be falsey;
+				});
+			});
 		});
     });
 

@@ -24,8 +24,10 @@ CharBag emptyCharBag(int n) {
 	value->table = new unsigned[n];
 	value->elements = new unsigned char[n];
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) {
 		value->table[i] = 0;
+		value->elements[i] = '\0';
+	}
 
 	return value;
 }
@@ -59,6 +61,14 @@ CharBagIterator iterate(CharBag b) {
 	value->currentIndex = 0;
 
 	return value;
+}
+
+bool valid(CharBagIterator it) {
+	return currentChar(it) != '\0';
+}
+
+void next(CharBagIterator it) {
+	it->currentIndex++;
 }
 
 char currentChar(CharBagIterator it) {
