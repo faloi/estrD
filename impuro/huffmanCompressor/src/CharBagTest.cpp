@@ -10,7 +10,7 @@
 
 #define CHARBAG_SIZE 256
 
-int main(int argc, char **argv) {
+int main_charbag(int argc, char **argv) {
     describe("CharBag", function () {
       static CharBag charBag;
 
