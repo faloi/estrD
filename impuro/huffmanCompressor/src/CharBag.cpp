@@ -10,8 +10,6 @@
 
 using namespace std;
 
-#define TABLE_LENGTH 256
-
 struct CharBagStr {
 	int size;
 	unsigned* table;
@@ -20,9 +18,9 @@ struct CharBagStr {
 CharBag emptyCharBag(int n) {
 	CharBag value = new CharBagStr;
 	value->size = n;
-	value->table = new unsigned[TABLE_LENGTH];
+	value->table = new unsigned[n];
 
-	for (int i = 0; i < TABLE_LENGTH; i++)
+	for (int i = 0; i < n; i++)
 		value->table[i] = 0;
 
 	return value;
