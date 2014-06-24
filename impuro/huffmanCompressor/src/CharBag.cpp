@@ -13,7 +13,6 @@ using namespace std;
 // Charbag
 
 struct CharBagStr {
-	int size;
 	unsigned* table;
 	unsigned char* elements;
 	unsigned nextElement;
@@ -21,7 +20,6 @@ struct CharBagStr {
 
 CharBag emptyCharBag(int n) {
 	CharBag value = new CharBagStr;
-	value->size = n;
 	value->table = new unsigned[n];
 	value->elements = new unsigned char[n];
 	value->nextElement = 0;
