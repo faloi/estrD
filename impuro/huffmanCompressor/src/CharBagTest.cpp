@@ -10,7 +10,7 @@
 
 #define CHARBAG_SIZE 256
 
-int main(int argc, char **argv) {
+CSPEC(CharBagTest, function() {
     describe("CharBag", function () {
       static CharBag charBag;
 
@@ -20,12 +20,12 @@ int main(int argc, char **argv) {
           });
 
           it("un char no almacenado tiene 0 ocurrencias", function() {
-            should(get(charBag, 'a')) be equal(0);
+            should_int(get(charBag, 'a')) be equal_to(0);
           });
 
           it("un char almacenado una vez tiene 1 ocurrencia", function() {
             add(charBag, 'a');
-            should(get(charBag, 'a')) be equal(1);
+            should_int(get(charBag, 'a')) be equal_to(1);
           });
 
           it("un char almacenado N veces tiene N ocurrencias", function() {
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
             add(charBag, 'a');
             add(charBag, 'a');
 
-            should(get(charBag, 'a')) be equal(3);
+            should_int(get(charBag, 'a')) be equal_to(3);
           });
         });
 
@@ -47,26 +47,26 @@ int main(int argc, char **argv) {
 
         it("un iterator recien creado sabe decir el current char", function() {
           add(charBag, 'a');
-          should(currentChar(iterator)) be equal('a');
+          should_char(currentChar(iterator)) be equal_to('a');
         });
 
         it("un iterator recien creado sabe decir el count del current char", function() {
           add(charBag, 'a');
           add(charBag, 'a');
 
-          should(currentCount(iterator)) be equal(2);
+          should_int(currentCount(iterator)) be equal_to(2);
         });
 
         it("sabe decir si el elemento actual es valido", function() {
           add(charBag, 'a');
-          should(valid(iterator)) be truthy;
+          should_bool(valid(iterator)) be truthy;
         });
 
         it("sabe decir si el elemento actual es invalido", function() {
           add(charBag, 'a');
           next(iterator);
 
-          should(valid(iterator)) be falsey;
+          should_bool(valid(iterator)) be falsey;
         });
 
         it("puede avanzar al siguiente elemento", function() {
@@ -76,10 +76,8 @@ int main(int argc, char **argv) {
 
           next(iterator);
 
-          should(currentChar(iterator)) be equal('b');
+          should_char(currentChar(iterator)) be equal_to('b');
         });
       });
     });
-
-    return CSPEC_RESULT;
-}
+});
