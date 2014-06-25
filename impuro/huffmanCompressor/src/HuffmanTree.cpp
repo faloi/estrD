@@ -8,6 +8,10 @@
 #include <iostream>
 #include "HuffmanTree.h"
 
+// INV. REP.
+// weight - el peso del arbol de Huffman
+// left y right - representan al arbol izquierdo y derecho respectivamente, las hojas se modelan con NULL en ambos subarboles
+
 struct HuffmanTreeStr {
 	char character;
 	int weight;
