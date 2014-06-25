@@ -25,6 +25,15 @@ HuffmanTree leaf(char c, int w) {
 	return value;
 }
 
-int weight(HuffmanTree t) {
+inline int weight(HuffmanTree t) {
 	return t->weight;
+}
+
+HuffmanTree binary(HuffmanTree a, HuffmanTree b) {
+	HuffmanTree value = new HuffmanTreeStr;
+	value->weight = weight(a) + weight(b);
+	value->left = a;
+	value->right = b;
+
+	return value;
 }
