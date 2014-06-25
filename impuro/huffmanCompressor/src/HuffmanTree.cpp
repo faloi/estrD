@@ -15,25 +15,28 @@ struct HuffmanTreeStr {
 	HuffmanTree right;
 };
 
-HuffmanTree leaf(char c, int w) {
+// Private
+
+inline HuffmanTree create(char c, int w, HuffmanTree a, HuffmanTree b) {
 	HuffmanTree value = new HuffmanTreeStr;
 	value->character = c;
 	value->weight = w;
-	value->left = NULL;
-	value->right = NULL;
-
-	return value;
-}
-
-inline int weight(HuffmanTree t) {
-	return t->weight;
-}
-
-HuffmanTree binary(HuffmanTree a, HuffmanTree b) {
-	HuffmanTree value = new HuffmanTreeStr;
-	value->weight = weight(a) + weight(b);
 	value->left = a;
 	value->right = b;
 
 	return value;
+}
+
+// Public
+
+HuffmanTree leaf(char c, int w) {
+	return create(c, w, NULL, NULL);
+}
+
+HuffmanTree binary(HuffmanTree a, HuffmanTree b) {
+	return create('\0', weight(a) + weight(b), a, b);
+}
+
+inline int weight(HuffmanTree t) {
+	return t->weight;
 }
