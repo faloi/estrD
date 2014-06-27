@@ -49,7 +49,8 @@ int get(CharBag& b, unsigned char c) {
 }
 
 void deleteCharBag(CharBag& b) {
-	delete b->table;
+	delete[] b->table;
+	delete[] b->elements;
 	delete b;
 }
 

@@ -7,6 +7,7 @@
 
 #include <cspec/cspec.h>
 #include "CharBag.h"
+#include <stdio.h>
 
 #define CHARBAG_SIZE 256
 
@@ -14,13 +15,19 @@ int main(int argc, char **argv) {
   describe("CharBag", function () {
 
     static CharBag charBag;
+    static CharBagIterator iterator;
+
+    before(function(){
+      charBag = emptyCharBag(CHARBAG_SIZE);
+      iterator = iterate(charBag);
+    });
+
+    after(function(){
+      deleteCharBag(charBag);
+      deleteCharBagIterator(iterator);
+    });
 
     describe("Calculo de ocurrencias", function() {
-
-      before(function(){
-        charBag = emptyCharBag(CHARBAG_SIZE);
-      });
-
       it("un char no almacenado tiene 0 ocurrencias", function() {
         should_int(get(charBag, 'a')) be equal to(0);
       });
@@ -41,14 +48,6 @@ int main(int argc, char **argv) {
     });
 
     describe("Iterator", function() {
-
-      static CharBagIterator iterator;
-
-      before(function(){
-        charBag = emptyCharBag(CHARBAG_SIZE);
-        iterator = iterate(charBag);
-      });
-
       it("un iterator recien creado sabe decir el current char", function() {
         add(charBag, 'a');
         should_char(currentChar(iterator)) be equal to('a');
@@ -84,7 +83,6 @@ int main(int argc, char **argv) {
       });
 
     });
-
   });
 
   return CSPEC_RESULT;
