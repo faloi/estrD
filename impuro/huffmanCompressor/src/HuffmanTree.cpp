@@ -31,6 +31,11 @@ inline HuffmanTree create(char c, int w, HuffmanTree a, HuffmanTree b) {
 	return value;
 }
 
+void deleteSubtreeIfExists(HuffmanTree& t) {
+	if (t != NULL)
+		deleteHuffmanTree(t);
+}
+
 // Public
 
 HuffmanTree leaf(char c, int w) {
@@ -43,4 +48,11 @@ HuffmanTree binary(HuffmanTree a, HuffmanTree b) {
 
 inline int weight(HuffmanTree t) {
 	return t->weight;
+}
+
+void deleteHuffmanTree(HuffmanTree& t) {
+	deleteSubtreeIfExists(t->left);
+	deleteSubtreeIfExists(t->right);
+
+	delete t;
 }

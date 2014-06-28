@@ -7,11 +7,10 @@
 
 #include <cspec/cspec.h>
 #include "CharBag.h"
-#include <stdio.h>
 
 #define CHARBAG_SIZE 256
 
-int main(int argc, char **argv) {
+int main0(int argc, char **argv) {
   describe("CharBag", function () {
 
     static CharBag charBag;
