@@ -26,6 +26,11 @@ PriorityQueue emptyPriorityQueue() {
 	return value;
 }
 
+void deletePriorityQueue(PriorityQueue& q) {
+	delete[] q->elements;
+	delete q;
+}
+
 int size(PriorityQueue q) {
 	return q->size;
 }

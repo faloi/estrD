@@ -17,6 +17,10 @@ void priorityQueueTest() {
 			queue = emptyPriorityQueue();
 		});
 
+		after(function(){
+			deletePriorityQueue(queue);
+		});
+
 		it("una queue vacia tiene size 0", function() {
 			should_int(size(queue)) be equal to(0);
 		});
