@@ -7,6 +7,7 @@
 
 #include <cspec/cspec.h>
 #include "PriorityQueue.h"
+#include "HuffmanTree.h"
 
 void priorityQueueTest() {
 	describe("PriorityQueue", function() {
@@ -26,6 +27,16 @@ void priorityQueueTest() {
 			enqueue(queue, leaf('c', 7));
 
 			should_int(size(queue)) be equal to(3);
+		});
+
+		it("desencola sus elementos segun prioridad", function() {
+			enqueue(queue, leaf('a', 3));
+			enqueue(queue, leaf('b', 2));
+			enqueue(queue, leaf('c', 7));
+
+			should_int(weight(dequeue(queue))) be equal to(2);
+			should_int(weight(dequeue(queue))) be equal to(3);
+			should_int(weight(dequeue(queue))) be equal to(7);
 		});
 	});
 }
