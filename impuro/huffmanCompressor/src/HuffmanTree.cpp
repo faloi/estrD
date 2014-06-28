@@ -44,11 +44,11 @@ void buildNode(ZipTable& zipTable, HuffmanTree t, BitChain bitChain) {
 	} else {
 		append(bitChain, false);
 		buildNode(zipTable, t->left, bitChain);
-
 		remove(bitChain);
 
 		append(bitChain, true);
 		buildNode(zipTable, t->right, bitChain);
+		remove(bitChain);
 	}
 }
 
@@ -77,9 +77,7 @@ ZipTable buildTable(HuffmanTree t) {
 	ZipTable value = emptyZipTable();
 
 	BitChain bitChain = emptyBitChain();
-
-	buildNode(value, t->left, bitChain);
-	buildNode(value, t->right, bitChain);
+	buildNode(value, t, bitChain);
 
 	deleteBitChain(bitChain);
 
