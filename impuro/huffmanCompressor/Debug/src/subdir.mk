@@ -4,7 +4,6 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/BitChainTest.cpp \
 ../src/CharBag.cpp \
 ../src/CharBagTest.cpp \
 ../src/HuffmanCompressor.cpp \
@@ -16,7 +15,6 @@ CPP_SRCS += \
 ../src/ZipTable.cpp 
 
 OBJS += \
-./src/BitChainTest.o \
 ./src/CharBag.o \
 ./src/CharBagTest.o \
 ./src/HuffmanCompressor.o \
@@ -28,7 +26,6 @@ OBJS += \
 ./src/ZipTable.o 
 
 CPP_DEPS += \
-./src/BitChainTest.d \
 ./src/CharBag.d \
 ./src/CharBagTest.d \
 ./src/HuffmanCompressor.d \
