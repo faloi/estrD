@@ -11,6 +11,7 @@
 int main() {
 	charBagTest();
 	huffmanTreeTest();
+	priorityQueueTest();
 
 	return CSPEC_RESULT;
 }
