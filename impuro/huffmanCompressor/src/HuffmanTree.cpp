@@ -87,5 +87,5 @@ ZipTable buildTable(HuffmanTree t) {
 }
 
 bool isLeaf(HuffmanTree t) {
-	return t->character != NULL_CHARACTER;
+	return t->left == NULL && t->right == NULL;
 }
