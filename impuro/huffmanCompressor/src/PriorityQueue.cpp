@@ -10,6 +10,11 @@
 
 #define MAX_SIZE 256
 
+// INV. REP.
+// size - cantidad de elementos contenidos en esta PQ
+// elements - como el árbol está completo, podemos guardar los elementos de forma contigua en un array,
+// donde los hijos del nodo i, serán 2i y 2i + 1
+
 struct PriorityQueueStr {
 	int size;
 	HuffmanTree* elements;
@@ -44,7 +49,7 @@ void enqueue(PriorityQueue& q, HuffmanTree t) {
 	}
 
 	q->elements[i] = t;
-};
+}
 
 HuffmanTree dequeue(PriorityQueue& q) {
 	HuffmanTree minElem = q->elements[1];
@@ -55,11 +60,11 @@ HuffmanTree dequeue(PriorityQueue& q) {
 	for (i = 1; i * 2 <= q->size; i = child) {
 		child = i * 2;
 
-		if (child != q->size && q->elements[child + 1] < q->elements[child]) {
+		if (child != q->size && weight(q->elements[child + 1]) < weight(q->elements[child])) {
 			child++;
 		}
 
-		if (lastElem > q->elements[child]) {
+		if (weight(lastElem) > weight(q->elements[child])) {
 			q->elements[i] = q->elements[child];
 		} else {
 			break;
