@@ -21,3 +21,7 @@ PriorityQueue emptyPriorityQueue() {
 int size(PriorityQueue q) {
 	return q->size;
 }
+
+void enqueue(PriorityQueue& q, HuffmanTree t) {
+	q->size++;
+};
