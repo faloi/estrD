@@ -38,6 +38,20 @@ void deleteSubtreeIfExists(HuffmanTree& t) {
 		deleteHuffmanTree(t);
 }
 
+void buildNode(ZipTable& zipTable, HuffmanTree t, BitChain bitChain) {
+	if (isLeaf(t)) {
+		add(zipTable, t->character, bitChain);
+	} else {
+		append(bitChain, false);
+		buildNode(zipTable, t->left, bitChain);
+
+		remove(bitChain);
+
+		append(bitChain, true);
+		buildNode(zipTable, t->right, bitChain);
+	}
+}
+
 // Public
 
 HuffmanTree leaf(char c, int w) {
@@ -57,6 +71,17 @@ void deleteHuffmanTree(HuffmanTree& t) {
 	deleteSubtreeIfExists(t->right);
 
 	delete t;
+}
+
+ZipTable buildTable(HuffmanTree t) {
+	ZipTable value = emptyZipTable();
+
+	BitChain bitChain = emptyBitChain();
+
+	buildNode(value, t->left, bitChain);
+	buildNode(value, t->right, bitChain);
+
+	return value;
 }
 
 bool isLeaf(HuffmanTree t) {
