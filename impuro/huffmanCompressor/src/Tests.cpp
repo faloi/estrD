@@ -8,7 +8,7 @@
 #include <cspec/cspec.h>
 #include "Tests.h"
 
-int main() {
+int runTests() {
 	charBagTest();
 	huffmanTreeTest();
 	priorityQueueTest();

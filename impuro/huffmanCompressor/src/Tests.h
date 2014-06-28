@@ -12,4 +12,6 @@ void charBagTest();
 void huffmanTreeTest();
 void priorityQueueTest();
 
+int runTests();
+
 #endif /* TESTS_H_ */
