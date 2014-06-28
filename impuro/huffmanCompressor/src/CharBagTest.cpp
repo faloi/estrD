@@ -10,7 +10,7 @@
 
 #define CHARBAG_SIZE 256
 
-int main0(int argc, char **argv) {
+void charBagTest() {
   describe("CharBag", function () {
 
     static CharBag charBag;
@@ -83,6 +83,4 @@ int main0(int argc, char **argv) {
 
     });
   });
-
-  return CSPEC_RESULT;
 }

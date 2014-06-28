@@ -8,7 +8,7 @@
 #include <cspec/cspec.h>
 #include "HuffmanTree.h"
 
-int main() {
+void huffmanTreeTest() {
 	describe("Huffman Tree", function() {
 		static HuffmanTree tree;
 
@@ -26,8 +26,6 @@ int main() {
 			should_int(weight(tree)) be equal to(10);
 		});
 	});
-
-	return CSPEC_RESULT;
 }
 
 
