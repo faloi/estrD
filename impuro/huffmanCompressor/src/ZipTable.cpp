@@ -1,11 +1,8 @@
 #include "ZipTable.h"
 
-#include <iostream>
 #include <vector>
 #include <fstream>
 #include <ctype.h>
-
-using namespace std;
 
 struct BitChainStr {
 	vector<bool> bits;
@@ -123,4 +120,17 @@ void compress(ZipTable z, char* sourceFile, char* targetReadableFile,
 	source.close();
 	target.close();
 	binary.close();
+}
+
+// Helpers for testing
+
+string toString(BitChain b) {
+	string value = "";
+	vector<bool> aux(b->bits);
+	while (!aux.empty()) {
+		value.append(aux.back()? "1" : "0");
+		aux.pop_back();
+	}
+
+	return value;
 }

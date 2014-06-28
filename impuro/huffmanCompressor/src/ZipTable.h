@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 
 // Tipo para cadenas de bits
 struct BitChainStr;
@@ -18,6 +20,7 @@ void append(BitChain& b, bool on);
 // Complejidad: O(1)
 void remove(BitChain& b);
 
+string toString(BitChain b);
 
 // Tipo de una tabla de compresión
 struct ZipTableStr;

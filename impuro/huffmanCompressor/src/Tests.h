@@ -10,5 +10,6 @@
 
 void charBagTest();
 void huffmanTreeTest();
+void bitChainTest();
 
 #endif /* TESTS_H_ */
