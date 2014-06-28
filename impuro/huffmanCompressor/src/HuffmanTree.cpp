@@ -81,6 +81,8 @@ ZipTable buildTable(HuffmanTree t) {
 	buildNode(value, t->left, bitChain);
 	buildNode(value, t->right, bitChain);
 
+	deleteBitChain(bitChain);
+
 	return value;
 }
 
