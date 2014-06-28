@@ -21,3 +21,5 @@ int weight(HuffmanTree t);
 // Construye la tabla de compresión asociada al árbol de Huffman.
 ZipTable buildTable(HuffmanTree t);
 
+// Indica si el nodo dado es una hoja
+bool isLeaf(HuffmanTree t);

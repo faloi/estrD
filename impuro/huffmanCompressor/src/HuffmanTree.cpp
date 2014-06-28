@@ -8,6 +8,8 @@
 #include <iostream>
 #include "HuffmanTree.h"
 
+#define NULL_CHARACTER '\0'
+
 // INV. REP.
 // weight - el peso del arbol de Huffman
 // left y right - representan al arbol izquierdo y derecho respectivamente, las hojas se modelan con NULL en ambos subarboles
@@ -43,7 +45,7 @@ HuffmanTree leaf(char c, int w) {
 }
 
 HuffmanTree binary(HuffmanTree a, HuffmanTree b) {
-	return create('\0', weight(a) + weight(b), a, b);
+	return create(NULL_CHARACTER, weight(a) + weight(b), a, b);
 }
 
 inline int weight(HuffmanTree t) {
@@ -55,4 +57,8 @@ void deleteHuffmanTree(HuffmanTree& t) {
 	deleteSubtreeIfExists(t->right);
 
 	delete t;
+}
+
+bool isLeaf(HuffmanTree t) {
+	return t->character != NULL_CHARACTER;
 }
