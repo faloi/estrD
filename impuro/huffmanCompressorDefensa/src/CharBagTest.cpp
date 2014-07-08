@@ -95,6 +95,15 @@ void charBagTest() {
         should_char(currentChar(iterator)) be equal to('b');
       });
 
+      it("luego de remover un char con 1, se avanza al siguiente", function() {
+    	  add(charBag, 'a');
+		  add(charBag, 'b');
+
+		  remove(charBag, 'a');
+
+		  should_char(currentChar(iterator)) be equal to('b');
+		  should_int(currentCount(iterator)) be equal to(1);
+      });
     });
   });
 }

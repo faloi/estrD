@@ -17,6 +17,8 @@ void add(CharBag& b, unsigned char c);
 // Complejidad: O(1)
 int get(CharBag& b, unsigned char c);
 
+// Remueve una ocurrencia del caracter c en el CharBag, si es que existe alguna
+// Complejidad O(n), siendo n la cantidad de caracteres con ocurrencias que hay en el CharBag
 void remove(CharBag& b, unsigned char c);
 
 // Tipo de un iterador de CharBags

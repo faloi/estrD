@@ -23,6 +23,25 @@ struct CharBagStr {
 	unsigned nextElement;
 };
 
+// Private
+
+void removeFromElements(CharBag& b, unsigned char c) {
+	unsigned i = 0;
+
+	while (b->elements[i] != c) {
+		i++;
+	}
+
+	while (i < b->nextElement) {
+		b->elements[i] = b->elements[i + 1];
+		i++;
+	}
+
+	b->nextElement--;
+}
+
+// Public
+
 CharBag emptyCharBag(int n) {
 	CharBag value = new CharBagStr;
 	value->table = new unsigned[n];
@@ -55,8 +74,15 @@ void deleteCharBag(CharBag& b) {
 }
 
 void remove(CharBag& b, unsigned char c) {
-	if (b->table[c] != 0) {
-		b->table[c]--;
+	int occurrences = b->table[c];
+
+	if (occurrences == 0)
+		return;
+
+	b->table[c]--;
+
+	if (occurrences == 1) {
+		removeFromElements(b, c);
 	}
 }
 
