@@ -52,3 +52,6 @@ char currentChar(CharBagIterator it);
 // Complejidad: O(1)
 int currentCount(CharBagIterator it);
 
+// Remueve una ocurrencia del elemento actual
+// Complejidad O(n), siendo n la cantidad de caracteres con ocurrencias que hay en el CharBag
+void removeCurrent(CharBagIterator& it);

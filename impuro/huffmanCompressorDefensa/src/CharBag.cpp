@@ -124,3 +124,7 @@ int currentCount(CharBagIterator it) {
 void deleteCharBagIterator(CharBagIterator& it) {
 	delete it;
 }
+
+void removeCurrent(CharBagIterator& it) {
+	remove(it->charBag, currentChar(it));
+}

@@ -104,6 +104,27 @@ void charBagTest() {
 		  should_char(currentChar(iterator)) be equal to('b');
 		  should_int(currentCount(iterator)) be equal to(1);
       });
+
+      it("puede removerse una ocurrencia del elemento actual", function() {
+    	 add(charBag, 'z');
+    	 add(charBag, 'z');
+
+    	 removeCurrent(iterator);
+
+    	 should_int(currentCount(iterator)) be equal to(1);
+      });
+
+      it("si el elemento actual tiene 1 ocurrencia y se lo remueve, se avanza al siguiente", function() {
+    	 add(charBag, 'w');
+
+    	 add(charBag, 'j');
+    	 add(charBag, 'j');
+
+    	 removeCurrent(iterator);
+
+    	 should_char(currentChar(iterator)) be equal to('j');
+    	 should_int(currentCount(iterator)) be equal to(2);
+      });
     });
   });
 }
