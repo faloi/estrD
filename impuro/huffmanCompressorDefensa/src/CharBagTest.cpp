@@ -44,6 +44,20 @@ void charBagTest() {
         should_int(get(charBag, 'a')) be equal to(3);
       });
 
+      it("remover un char sin ocurrencias no hace nada", function() {
+        remove(charBag, 'a');
+
+        should_int(get(charBag, 'a')) be equal to(0);
+      });
+
+      it("remover un char con mas de 1 ocurrencia decrementa su cantidad", function() {
+    	  add(charBag, 'b');
+		  add(charBag, 'b');
+
+		  remove(charBag, 'b');
+
+		  should_int(get(charBag, 'b')) be equal to(1);
+      });
     });
 
     describe("Iterator", function() {

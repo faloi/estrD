@@ -54,6 +54,12 @@ void deleteCharBag(CharBag& b) {
 	delete b;
 }
 
+void remove(CharBag& b, unsigned char c) {
+	if (b->table[c] != 0) {
+		b->table[c]--;
+	}
+}
+
 // Iterator
 
 // INV. REP.

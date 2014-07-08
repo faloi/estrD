@@ -17,6 +17,7 @@ void add(CharBag& b, unsigned char c);
 // Complejidad: O(1)
 int get(CharBag& b, unsigned char c);
 
+void remove(CharBag& b, unsigned char c);
 
 // Tipo de un iterador de CharBags
 struct CharBagIteratorStr;
